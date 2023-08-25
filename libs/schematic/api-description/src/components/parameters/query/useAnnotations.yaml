@@ -1,0 +1,6 @@
+name: useAnnotations
+in: query
+description: Whether or not to use annotations
+required: false
+schema:
+  $ref: ../../schemas/UseAnnotations.yaml

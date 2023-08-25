@@ -1,0 +1,6 @@
+name: strictValidation
+in: query
+description: Whether or not to use strict validation.
+required: false
+schema:
+  $ref: ../../schemas/StrictValidation.yaml

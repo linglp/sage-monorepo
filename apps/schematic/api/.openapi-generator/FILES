@@ -1,6 +1,7 @@
 AUTHORS.md
 schematic_api/__init__.py
 schematic_api/controllers/__init__.py
+schematic_api/controllers/manifests_controller.py
 schematic_api/controllers/schema_controller.py
 schematic_api/controllers/security_controller_.py
 schematic_api/controllers/storage_controller.py
@@ -12,7 +13,9 @@ schematic_api/models/attributes_page.py
 schematic_api/models/attributes_page_all_of.py
 schematic_api/models/base_model_.py
 schematic_api/models/basic_error.py
+schematic_api/models/components_inner.py
 schematic_api/models/dataset.py
+schematic_api/models/dataset_ids_inner.py
 schematic_api/models/datasets_page.py
 schematic_api/models/datasets_page_all_of.py
 schematic_api/models/manifest.py
@@ -27,5 +30,6 @@ schematic_api/models/projects_page.py
 schematic_api/models/projects_page_all_of.py
 schematic_api/openapi/openapi.yaml
 schematic_api/test/__init__.py
+schematic_api/test/test_manifests_controller.py
 schematic_api/typing_utils.py
 schematic_api/util.py

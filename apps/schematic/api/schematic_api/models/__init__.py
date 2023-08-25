@@ -8,7 +8,9 @@ from schematic_api.models.attribute import Attribute
 from schematic_api.models.attributes_page import AttributesPage
 from schematic_api.models.attributes_page_all_of import AttributesPageAllOf
 from schematic_api.models.basic_error import BasicError
+from schematic_api.models.components_inner import ComponentsInner
 from schematic_api.models.dataset import Dataset
+from schematic_api.models.dataset_ids_inner import DatasetIdsInner
 from schematic_api.models.datasets_page import DatasetsPage
 from schematic_api.models.datasets_page_all_of import DatasetsPageAllOf
 from schematic_api.models.manifest import Manifest

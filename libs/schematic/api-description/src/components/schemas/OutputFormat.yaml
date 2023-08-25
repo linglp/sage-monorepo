@@ -1,0 +1,7 @@
+description: Manifest output format
+type: string
+items:
+  enum:
+    - google_sheet
+    - excel
+    - dataframe

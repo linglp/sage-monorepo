@@ -1,0 +1,12 @@
+# type: array
+# description: an array of components
+# items:
+#  oneOf:
+#   - $ref: ComponentLabel.yaml
+#  items: {}
+type: array
+description: an array of components
+items:
+  anyOf:
+    - $ref: ComponentLabel.yaml
+  type: string

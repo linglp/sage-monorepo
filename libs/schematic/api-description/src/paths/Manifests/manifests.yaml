@@ -1,0 +1,42 @@
+parameters:
+  - $ref: ../../components/parameters/query/schemaUrl.yaml
+  - $ref: ../../components/parameters/query/title.yaml
+  - $ref: ../../components/parameters/query/components.yaml
+  - $ref: ../../components/parameters/query/useAnnotations.yaml
+  - $ref: ../../components/parameters/query/datasetIds.yaml
+  - $ref: ../../components/parameters/query/assetViewId-2.yaml
+  - $ref: ../../components/parameters/query/strictValidation.yaml
+  - $ref: ../../components/parameters/query/outputFormat.yaml
+
+get:
+  tags:
+    - Manifests
+  summary: Facilitate manifest generation
+  description: Facilitate manifest generation
+  operationId: getManifests
+  parameters:
+    - $ref: ../../components/parameters/query/schemaUrl.yaml
+    - $ref: ../../components/parameters/query/title.yaml
+    - $ref: ../../components/parameters/query/components.yaml
+    - $ref: ../../components/parameters/query/datasetIds.yaml
+    - $ref: ../../components/parameters/query/assetViewId-2.yaml
+    - $ref: ../../components/parameters/query/useAnnotations.yaml
+    - $ref: ../../components/parameters/query/strictValidation.yaml
+    - $ref: ../../components/parameters/query/outputFormat.yaml
+
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/ManifestsPage.yaml
+
+    '400':
+      $ref: ../../components/responses/BadRequest.yaml
+    '401':
+      $ref: ../../components/responses/Unauthorized.yaml
+    '404':
+      $ref: ../../components/responses/NotFound.yaml
+    '500':
+      $ref: ../../components/responses/InternalServerError.yaml

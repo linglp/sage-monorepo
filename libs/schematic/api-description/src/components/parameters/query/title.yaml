@@ -1,0 +1,6 @@
+name: title
+in: query
+description: The title of a manifest
+required: false
+schema:
+  $ref: ../../schemas/Title.yaml

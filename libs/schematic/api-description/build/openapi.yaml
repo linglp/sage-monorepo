@@ -143,6 +143,46 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /manifests:
+    parameters:
+      - $ref: '#/components/parameters/schemaUrl'
+      - $ref: '#/components/parameters/title'
+      - $ref: '#/components/parameters/components'
+      - $ref: '#/components/parameters/useAnnotations'
+      - $ref: '#/components/parameters/datasetIds'
+      - $ref: '#/components/parameters/assetViewId-2'
+      - $ref: '#/components/parameters/strictValidation'
+      - $ref: '#/components/parameters/outputFormat'
+    get:
+      tags:
+        - Manifests
+      summary: Facilitate manifest generation
+      description: Facilitate manifest generation
+      operationId: getManifests
+      parameters:
+        - $ref: '#/components/parameters/schemaUrl'
+        - $ref: '#/components/parameters/title'
+        - $ref: '#/components/parameters/components'
+        - $ref: '#/components/parameters/datasetIds'
+        - $ref: '#/components/parameters/assetViewId-2'
+        - $ref: '#/components/parameters/useAnnotations'
+        - $ref: '#/components/parameters/strictValidation'
+        - $ref: '#/components/parameters/outputFormat'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManifestsPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   securitySchemes:
     bearerAuth:
@@ -407,6 +447,44 @@ components:
             - projects
       x-java-class-annotations:
         - '@lombok.Builder'
+    Title:
+      description: The title of a manifest
+      type: string
+      example: Example
+    Components:
+      type: array
+      description: an array of components
+      items:
+        anyOf:
+          - $ref: '#/components/schemas/ComponentLabel'
+        type: string
+    UseAnnotations:
+      description: Whether or not to use annotations
+      type: boolean
+      default: false
+    DatasetId:
+      description: A datasetID.
+      type: string
+      example: syn35187716
+    DatasetIds:
+      type: array
+      description: an array of datasetIds
+      items:
+        anyOf:
+          - $ref: '#/components/schemas/DatasetId'
+        type: string
+    StrictValidation:
+      description: Whether or not to use strict validation. If false, only raise a warning when applying validation rules to google sheet. If true, raise an error
+      type: boolean
+      default: true
+    OutputFormat:
+      description: Manifest output format
+      type: string
+      items:
+        enum:
+          - google_sheet
+          - excel
+          - dataframe
   parameters:
     projectId:
       name: projectId
@@ -464,6 +542,55 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/ReturnOrderedBySchema'
+    title:
+      name: title
+      in: query
+      description: The title of a manifest
+      required: false
+      schema:
+        $ref: '#/components/schemas/Title'
+    components:
+      name: components
+      in: query
+      description: An array of components
+      required: false
+      schema:
+        $ref: '#/components/schemas/Components'
+    useAnnotations:
+      name: useAnnotations
+      in: query
+      description: Whether or not to use annotations
+      required: false
+      schema:
+        $ref: '#/components/schemas/UseAnnotations'
+    datasetIds:
+      name: datasetIds
+      in: query
+      description: An array of dataset ids
+      required: false
+      schema:
+        $ref: '#/components/schemas/DatasetIds'
+    assetViewId-2:
+      name: assetViewId
+      in: query
+      description: ID of view listing all project data assets. E.g. for Synapse this would be the Synapse ID of the fileview listing all data assets for a given project
+      required: false
+      schema:
+        $ref: '#/components/schemas/AssetViewId'
+    strictValidation:
+      name: strictValidation
+      in: query
+      description: Whether or not to use strict validation.
+      required: false
+      schema:
+        $ref: '#/components/schemas/StrictValidation'
+    outputFormat:
+      name: outputFormat
+      in: query
+      description: The output of manifests to return.
+      required: false
+      schema:
+        $ref: '#/components/schemas/OutputFormat'
   responses:
     BadRequest:
       description: Invalid request

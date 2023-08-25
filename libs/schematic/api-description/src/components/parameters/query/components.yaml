@@ -1,0 +1,6 @@
+name: components
+in: query
+description: An array of components
+required: false
+schema:
+  $ref: ../../schemas/Components.yaml

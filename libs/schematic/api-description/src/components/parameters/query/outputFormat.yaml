@@ -1,0 +1,6 @@
+name: outputFormat
+in: query
+description: The output of manifests to return.
+required: false
+schema:
+  $ref: ../../schemas/OutputFormat.yaml
