@@ -5,6 +5,7 @@ schematic_api/controllers/manifests_controller.py
 schematic_api/controllers/schema_controller.py
 schematic_api/controllers/security_controller_.py
 schematic_api/controllers/storage_controller.py
+schematic_api/controllers/manifest_controller.py
 schematic_api/encoder.py
 schematic_api/models/__init__.py
 schematic_api/models/asset_type.py
@@ -30,6 +31,7 @@ schematic_api/models/projects_page.py
 schematic_api/models/projects_page_all_of.py
 schematic_api/openapi/openapi.yaml
 schematic_api/test/__init__.py
+schematic_api/test/test_manifests_controller_impl.py
 schematic_api/test/test_manifests_controller.py
 schematic_api/typing_utils.py
 schematic_api/util.py
