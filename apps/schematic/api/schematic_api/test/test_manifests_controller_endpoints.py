@@ -2,46 +2,57 @@
 
 from __future__ import absolute_import
 import unittest
+from unittest.mock import patch
 
-# from flask import json
-# from six import BytesIO
+import schematic_api.controllers.manifests_controller_impl
+from schematic_api.test import BaseTestCase
 
-# from schematic_api.models.basic_error import BasicError  # noqa: E501
-# from schematic_api.models.components_inner import ComponentsInner  # noqa: E501
-# from schematic_api.models.dataset_ids_inner import DatasetIdsInner  # noqa: E501
-# from schematic_api.models.manifests_page import ManifestsPage  # noqa: E501
-# from schematic_api.test import BaseTestCase
+HEADERS = {
+    "Accept": "application/json",
+    "Authorization": "Bearer xxx",
+}
+
+GENERATE_MANIFEST_URL = "/api/v1/manifests?schemaUrl=url1&title=Example \
+&components=Patient&useAnnotations=false \
+&strictValidation=true&outputFormat=google_sheet"
+NODE_DEPENDENCIES_URL = "/api/v1/"
 
 
-# class TestManifestsController(BaseTestCase):
-#     """ManifestsController integration test stubs"""
+class TestComponentAttributes(BaseTestCase):
+    """Test case for component attributes endpoint"""
 
-#     def test_get_manifests(self):
-#         """Test case for get_manifests
+    def test_success(self) -> None:
+        """Test for successful result"""
 
-#         Facilitate manifest generation
-#         """
-#         query_string = [
-#             ("schemaUrl", "schema_url_example"),
-#             ("title", "title_example"),
-#             ("components", [schematic_api.ComponentsInner()]),
-#             ("useAnnotations", False),
-#             ("datasetIds", [schematic_api.DatasetIdsInner()]),
-#             ("assetViewId", "asset_view_id_example"),
-#             ("strictValidation", True),
-#             ("outputFormat", ["output_format_example"]),
-#         ]
-#         headers = {
-#             "Accept": "application/json",
-#             "Authorization": "Bearer special-key",
-#         }
-#         response = self.client.open(
-#             "/api/v1/manifests",
-#             method="GET",
-#             headers=headers,
-#             query_string=query_string,
-#         )
-#         self.assert200(response, "Response body is : " + response.data.decode("utf-8"))
+        with patch.object(
+            schematic_api.controllers.manifests_controller_impl,
+            "get_manifests",
+            return_value=["google_sheet_url1"],
+        ):
+            response = self.client.open(
+                GENERATE_MANIFEST_URL, method="GET", headers=HEADERS
+            )
+            self.assert200(
+                response, f"Response body is : {response.data.decode('utf-8')}"
+            )
+
+            response_urls = response.json
+            assert len(response_urls) == 1
+            assert "google_sheet_url1" in response_urls
+
+    def test_500(self) -> None:
+        """Test for 500 result"""
+        with patch.object(
+            schematic_api.controllers.manifests_controller_impl,
+            "get_manifests",
+            side_effect=TypeError,
+        ):
+            response = self.client.open(
+                GENERATE_MANIFEST_URL, method="GET", headers=HEADERS
+            )
+            self.assert500(
+                response, f"Response body is : {response.data.decode('utf-8')}"
+            )
 
 
 if __name__ == "__main__":

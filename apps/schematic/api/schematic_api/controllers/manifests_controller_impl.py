@@ -258,20 +258,10 @@ def get_manifests(
                 output_format=output_format,
             )
 
-        assert isinstance(output, (str, pd.DataFrame))
+        # assert isinstance(output, (str, pd.DataFrame))
+
         all_results.append(output)
-    # assert isinstance(all_results, (List[str], pd.DataFrame))
+    # assert isinstance(all_results, (list[str], pd.DataFrame))
     # assert isinstance(all_results, Union[list[str], list[pd.DataFrame]])
     # assert type(all_results) is list[str] or type(all_results) is list[pd.DataFrame]
     return all_results  # type: ignore
-
-
-# title, components, use_annotations, dataset_id, strict_validation, output_format
-# print("what schema url", schema_url)
-# print("what title???", title)
-# print('asset view id', asset_view_id)
-# print("components", components)
-# print("use annotations", use_annotations)
-# print("dataset ids", dataset_ids)
-# print("strict validation", strict_validation)
-# print("output format", output_format)
