@@ -1,17 +1,18 @@
-"""Tests for manifest related endpoints"""
 # type: ignore
+
+"""Tests for manifest related endpoints"""
 
 from __future__ import absolute_import
 import unittest
 from unittest.mock import patch
 import pytest
-import typing
 
 import schematic_api.controllers.manifests_controller_impl
 from schematic_api.controllers.manifests_controller_impl import (
     check_dataset_ids_match_data_types,
     check_dataset_ids_contain_empty_val,
 )
+
 from schematic_api.test import BaseTestCase
 
 HEADERS = {
@@ -62,7 +63,7 @@ def test_check_dataset_ids_contain_empty_val(dataset_ids) -> None:
 
 
 # end
-class TestComponentAttributes(BaseTestCase):
+class TestManifestGeneration(BaseTestCase):
     """Test case for component attributes endpoint"""
 
     def test_success(self) -> None:
