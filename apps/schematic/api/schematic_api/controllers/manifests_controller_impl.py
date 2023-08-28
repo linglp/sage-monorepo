@@ -41,7 +41,7 @@ def check_dataset_ids_match_data_types(
             )
 
 
-def check_dataset_ids_empty_space(dataset_ids: Union[None, list[str]]) -> None:
+def check_dataset_ids_contain_empty_val(dataset_ids: Union[None, list[str]]) -> None:
     """check if dataset ids contain empty spaces
 
     Args:
@@ -52,10 +52,10 @@ def check_dataset_ids_empty_space(dataset_ids: Union[None, list[str]]) -> None:
         Please check your input
     """
     if dataset_ids:
-        contain_empty_str = all(
+        all_valid = all(
             "" == dataset_id or dataset_id.isspace() for dataset_id in dataset_ids
         )
-        if contain_empty_str:
+        if not all_valid:
             raise ValueError(
                 "Dataset ids contain at least one empty value. Please check your input"
             )
@@ -226,7 +226,7 @@ def get_manifests(
 
     # if dataset ids are provided, make sure that they don't have any errors
     if dataset_ids:
-        check_dataset_ids_empty_space(dataset_ids=dataset_ids)
+        check_dataset_ids_contain_empty_val(dataset_ids=dataset_ids)
         check_dataset_ids_match_data_types(
             data_types=components, dataset_ids=dataset_ids
         )
