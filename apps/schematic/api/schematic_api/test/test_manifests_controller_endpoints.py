@@ -11,6 +11,7 @@ import schematic_api.controllers.manifests_controller_impl
 from schematic_api.controllers.manifests_controller_impl import (
     check_dataset_ids_match_data_types,
     check_dataset_ids_contain_empty_val,
+    format_manifest_title
 )
 
 from schematic_api.test import BaseTestCase
@@ -21,7 +22,7 @@ HEADERS = {
 }
 
 GENERATE_MANIFEST_URL = "/api/v1/manifests?schemaUrl=url1&title=Example \
-&components=Patient&useAnnotations=false \
+&components=Patient&useAnnotations=false\
 &strictValidation=true&outputFormat=google_sheet"
 NODE_DEPENDENCIES_URL = "/api/v1/"
 
@@ -61,6 +62,15 @@ def test_check_dataset_ids_contain_empty_val(dataset_ids) -> None:
         with pytest.raises(ValueError):
             check_dataset_ids_contain_empty_val(dataset_ids)
 
+@pytest.mark.parametrize(
+    "component, title, expected", [("MockComponent", "Test", "Test.MockComponent.manifest"), ("MockComponent", None, "Example.MockComponent.manifest")]
+)
+def test_format_manifest_title(component, title, expected):
+    """Format titles of manifest"""
+    output_title = format_manifest_title(component, title)
+    assert output_title == expected
+
+    
 
 # end
 class TestManifestGeneration(BaseTestCase):
