@@ -1,6 +1,8 @@
 resources:
-  - configmaps/dataset-service-deployment.yaml
-  - configmaps/dataset-service-service.yaml
+  - configmaps/dataset-service-configmap.yaml
+  - configmaps/postgres-configmap.yaml
+  - dataset-service/dataset-service-deployment.yaml
+  - dataset-service/dataset-service-service.yaml
   - helm/Chart.yaml
   - helm/values.yaml
   - opensearch/opensearch-deployment.yaml
