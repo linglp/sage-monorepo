@@ -1,5 +1,5 @@
 resources:
-  - configmaps/dataset-service-configmap.yaml
+  - configmaps/dataset-service-config.yaml
   - configmaps/postgres-configmap.yaml
   - dataset-service/dataset-service-deployment.yaml
   - dataset-service/dataset-service-service.yaml
