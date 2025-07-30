@@ -1,6 +1,5 @@
 resources:
-  - configmapsaml
-  - configmaps/amp-als-postgres-init.yaml
+  - configmaps
   - dataset-service
   - helm
   - opensearch
