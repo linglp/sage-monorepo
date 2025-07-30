@@ -1,7 +1,14 @@
 resources:
-  - configmaps/
-  - dataset-service/
-  - helm/
-  - opensearch/
-  - postgres/
-  - secrets/
+  - configmaps/dataset-service-deployment.yaml
+  - configmaps/dataset-service-service.yaml
+  - helm/Chart.yaml
+  - helm/values.yaml
+  - opensearch/opensearch-deployment.yaml
+  - opensearch/opensearch-service.yaml
+  - opensearch/opensearch-pvc.yaml
+  - postgres/postgres-deployment.yaml
+  - postgres/postgres-service.yaml
+  - postgres/postgres-pvc.yaml
+  - secrets/dataset-service-secrets.yaml
+  - secrets/postgres-secrets.yaml
+  - namespace.yaml
