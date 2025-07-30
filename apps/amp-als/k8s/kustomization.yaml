@@ -3,8 +3,6 @@ resources:
   - configmaps/postgres-init-configmap.yaml
   - dataset-service/dataset-service-deployment.yaml
   - dataset-service/dataset-service-service.yaml
-  - helm/Chart.yaml
-  - helm/values.yaml
   - opensearch/opensearch-deployment.yaml
   - opensearch/opensearch-service.yaml
   - opensearch/opensearch-pvc.yaml
