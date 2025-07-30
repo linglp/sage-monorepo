@@ -9,6 +9,6 @@ resources:
   - postgres/postgres-deployment.yaml
   - postgres/postgres-service.yaml
   - postgres/postgres-pvc.yaml
-  - secrets/dataset-service-secrets.yaml
-  - secrets/postgres-secrets.yaml
+  - secrets/dataset-service-secret.yaml
+  - secrets/postgres-secret.yaml
   - namespace.yaml
