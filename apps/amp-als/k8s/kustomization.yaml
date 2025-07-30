@@ -1,7 +1,7 @@
 resources:
-  - configmaps
-  - dataset-service
-  - helm
-  - opensearch
-  - postgres
-  - secrets
+  - configmaps/
+  - dataset-service/
+  - helm/
+  - opensearch/
+  - postgres/
+  - secrets/
