@@ -1,6 +1,6 @@
 resources:
   - configmaps/dataset-service-config.yaml
-  - configmaps/postgres-configmap.yaml
+  - configmaps/postgres-init-configmap.yaml
   - dataset-service/dataset-service-deployment.yaml
   - dataset-service/dataset-service-service.yaml
   - helm/Chart.yaml
