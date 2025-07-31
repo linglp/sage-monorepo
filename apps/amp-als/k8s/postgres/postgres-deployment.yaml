@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: ghcr.io/sage-bionetworks/amp-als-postgres:local
+          image: ghcr.io/sage-bionetworks/amp-als-postgres:sha-3d0514d
           ports:
             - containerPort: 8401
               name: postgres

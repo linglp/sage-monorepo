@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: dataset-service
-          image: ghcr.io/sage-bionetworks/amp-als-dataset-service:local
+          image: ghcr.io/sage-bionetworks/amp-als-dataset-service:sha-3d0514d
           ports:
             - containerPort: 8404
               name: http

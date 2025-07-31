@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: opensearch
-          image: ghcr.io/sage-bionetworks/amp-als-opensearch:local
+          image: ghcr.io/sage-bionetworks/amp-als-opensearch:sha-3d0514d
           ports:
             - containerPort: 8402
               name: http
